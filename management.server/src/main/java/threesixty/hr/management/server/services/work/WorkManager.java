@@ -11,6 +11,7 @@ import org.eclipse.scout.rt.shared.services.lookup.ILookupCall;
 
 import threesixty.hr.management.server.services.work.order.WorkOrderResourceClient;
 import threesixty.hr.management.server.services.work.order.WorkOrderToFormData;
+import threesixty.hr.management.server.services.work.order.WorkOrderTypeResourceClient;
 import threesixty.hr.management.shared.exception.IdentifierNotSetVetoException;
 import threesixty.hr.management.shared.exception.WorkOrderNotFoundVetoException;
 import threesixty.hr.management.shared.services.work.IWorkManager;
@@ -89,9 +90,7 @@ public class WorkManager implements IWorkManager {
 		workOrder.setId(formData.getId());
 		workOrder.setType(type);
 		
-		WorkOrder result =
-				BEANS.get(WorkOrderResourceClient.class)
-					.update(workOrder);
+		BEANS.get(WorkOrderResourceClient.class).update(workOrder);
 		
 		return formData;
 	}
@@ -115,5 +114,18 @@ public class WorkManager implements IWorkManager {
 				.stream()
 				.filter(workOrder -> workOrder.isAssignedTo(assignedToPartyId))
 				.collect(Collectors.toList());
+	}
+	
+	/**
+	 * Retrieve the work order type by name
+	 * @param workOrderTypeName The name of the work order type
+	 * @return The work order type or null
+	 */
+	@Override
+	public WorkOrderType retrieveWorkOrderType(
+			final String workOrderTypeName) {
+		
+		return BEANS.get(WorkOrderTypeResourceClient.class)
+				.retrieveById(workOrderTypeName);
 	}
 }

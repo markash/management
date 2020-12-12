@@ -1,3 +1,33 @@
 @import "style/colors.less";
 
 @import "style/Calendar.less";
+
+@font-face {
+    font-family: fontAwesomeRegular;
+    font-weight: normal;
+    src: url('fonts/fa-regular-400.woff') format('woff');
+}
+
+@font-face {
+    font-family: fontAwesomeSolid;
+    font-weight: normal;
+    src: url('fonts/fa-solid-900.woff') format('woff');
+}
+
+@font-face {
+    font-family: fontAwesomeBrands;
+    font-weight: normal;
+    src: url('fonts/fa-brands-400.woff') format('woff');
+}
+
+.font-fontAwesomeSolid {
+    font-family: fontAwesomeSolid, @font-default-family;
+}
+
+.font-fontAwesomeRegular {
+    font-family: fontAwesomeRegular, @font-default-family;
+}
+
+.font-fontAwesomeBrands {
+    font-family: fontAwesomeBrands, @font-default-family;
+}

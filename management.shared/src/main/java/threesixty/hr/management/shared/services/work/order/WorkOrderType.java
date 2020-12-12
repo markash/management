@@ -18,6 +18,7 @@ import threesixty.hr.management.shared.services.TypeEntity;
 @NoArgsConstructor
 @AllArgsConstructor
 public class WorkOrderType implements TypeEntity {
+	private static final long serialVersionUID = -6198539248274639462L;
 
 	private String name;
 	private String description;

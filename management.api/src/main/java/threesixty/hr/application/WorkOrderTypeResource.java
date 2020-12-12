@@ -41,12 +41,12 @@ public class WorkOrderTypeResource {
     }
     
     @GET
-    @Path("/{id}")
+    @Path("/{name}")
     public Uni<WorkOrderTypeDo> single(
-    		final @PathParam("id") Long id) {
+    		final @PathParam("name") String name) {
     	
     	WorkOrderTypeDo result = 
-    			Optional.ofNullable((WorkOrderType) WorkOrderType.findById(id))
+    			Optional.ofNullable((WorkOrderType) WorkOrderType.findById(name))
     				.map(workOrder -> workOrderMapper.toWorkOrderTypeDo(workOrder))
     				.orElse(null);
     	

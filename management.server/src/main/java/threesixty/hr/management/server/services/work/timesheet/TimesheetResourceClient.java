@@ -13,7 +13,7 @@ import threesixty.hr.management.server.services.rest.RestParam;
 import threesixty.hr.management.shared.services.work.timesheet.TimesheetEntry;
 import threesixty.hr.management.shared.services.work.timesheet.TimesheetPeriods;
 
-public class TimesheetResourceClient extends AbstractResourceClient<TimesheetEntry> {
+public class TimesheetResourceClient extends AbstractResourceClient<TimesheetEntry, Long> {
 
 	protected static final String RESOURCE_PATH = "timesheet";
 

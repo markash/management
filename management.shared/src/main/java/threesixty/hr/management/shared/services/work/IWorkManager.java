@@ -8,6 +8,7 @@ import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
 import org.eclipse.scout.rt.shared.services.lookup.ILookupCall;
 
 import threesixty.hr.management.shared.services.work.order.WorkOrder;
+import threesixty.hr.management.shared.services.work.order.WorkOrderType;
 import threesixty.hr.management.shared.work.order.WorkOrderFormData;
 import threesixty.hr.management.shared.work.order.WorkOrderTablePageData;
 
@@ -42,4 +43,12 @@ public interface IWorkManager extends IService {
 	 */
 	List<WorkOrder> assignedToLookup(
 			final ILookupCall<Long> call);
+	
+	/**
+	 * Retrieve the work order type by name
+	 * @param workOrderTypeName The name of the work order type
+	 * @return The work order type or null
+	 */
+	WorkOrderType retrieveWorkOrderType(
+			final String workOrderTypeName);
 }

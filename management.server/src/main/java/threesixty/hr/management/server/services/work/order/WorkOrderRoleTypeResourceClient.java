@@ -7,7 +7,7 @@ import javax.ws.rs.core.GenericType;
 import threesixty.hr.management.server.services.rest.AbstractResourceClient;
 import threesixty.hr.management.shared.services.work.order.WorkOrderRoleType;
 
-public class WorkOrderRoleTypeResourceClient extends AbstractResourceClient<WorkOrderRoleType> {
+public class WorkOrderRoleTypeResourceClient extends AbstractResourceClient<WorkOrderRoleType, String> {
 
 	protected static final String RESOURCE_PATH = "workOrderRoleType";
 

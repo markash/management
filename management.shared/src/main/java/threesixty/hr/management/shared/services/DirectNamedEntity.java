@@ -1,5 +1,7 @@
 package threesixty.hr.management.shared.services;
 
+import java.io.Serializable;
+
 /**
  * A direct named entity has a single name that defines the entity. Some entities, like Party,
  * have names assigned that could be effective from a certain date, i.e. Family name for 
@@ -7,7 +9,7 @@ package threesixty.hr.management.shared.services;
  * 
  * @author Mark Ashworth
  */
-public interface DirectNamedEntity {
+public interface DirectNamedEntity extends Serializable {
 	
 	/**
 	 * The name of the entity

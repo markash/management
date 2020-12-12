@@ -19,6 +19,7 @@ import org.eclipse.scout.rt.shared.services.common.jdbc.SearchFilter;
 import threesixty.hr.management.client.common.column.AbstractIdColumn;
 import threesixty.hr.management.client.common.column.AbstractNameColumn;
 import threesixty.hr.management.client.work.order.WorkOrderTablePage.Table;
+import threesixty.hr.management.shared.SolidIcons;
 import threesixty.hr.management.shared.services.work.order.IWorkOrderEngine;
 import threesixty.hr.management.shared.work.order.WorkOrderTablePageData;
 
@@ -29,14 +30,15 @@ public class WorkOrderTablePage extends AbstractPageWithTable<Table> {
 		return TEXTS.get("WorkOrders");
 	}
 
-//	@Override
-//	protected IPage<?> execCreateChildPage(
-//			final ITableRow row) {
-//		
-//		Long id = (Long) row.getCell(getTable().getIdColumn()).getValue();
-//		
-//		return new WorkOrderNodePage(id);
-//	}
+	@Override
+	protected String getConfiguredIconId() {
+		return SolidIcons.CLIPBOARD;
+	}
+
+	@Override
+	protected String getConfiguredOverviewIconId() {
+		return SolidIcons.CLIPBOARD;
+	}
 	
 	@Override
 	protected void execLoadData(
@@ -174,10 +176,15 @@ public class WorkOrderTablePage extends AbstractPageWithTable<Table> {
 		}
 
 		@Order(1000)
-		public class ViewMenu extends AbstractMenu {
+		public class ViewMenu extends AbstractMenu /* NOSONAR */ {
 			@Override
 			protected String getConfiguredText() {
 				return TEXTS.get("View");
+			}
+
+			@Override
+			protected String getConfiguredIconId() {
+				return SolidIcons.CLIPBOARD;
 			}
 
 			@Override

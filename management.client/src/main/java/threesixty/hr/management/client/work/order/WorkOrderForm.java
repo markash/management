@@ -1,5 +1,7 @@
 package threesixty.hr.management.client.work.order;
 
+import java.util.Optional;
+
 import org.eclipse.scout.rt.client.dto.FormData;
 import org.eclipse.scout.rt.client.ui.basic.table.AbstractTable;
 import org.eclipse.scout.rt.client.ui.basic.table.columns.AbstractDateColumn;
@@ -19,6 +21,7 @@ import org.eclipse.scout.rt.client.ui.form.fields.tablefield.AbstractTableField;
 import org.eclipse.scout.rt.platform.BEANS;
 import org.eclipse.scout.rt.platform.Order;
 import org.eclipse.scout.rt.platform.text.TEXTS;
+import org.eclipse.scout.rt.platform.util.StringUtility;
 import org.eclipse.scout.rt.shared.services.lookup.ILookupCall;
 
 import threesixty.hr.management.client.common.column.AbstractIdColumn;
@@ -47,6 +50,7 @@ import threesixty.hr.management.client.work.order.WorkOrderTablePage.Table.IdCol
 import threesixty.hr.management.shared.services.party.internalOrganization.InternalOrganizationLookupCall;
 import threesixty.hr.management.shared.services.party.person.PersonLookupCall;
 import threesixty.hr.management.shared.services.work.IWorkManager;
+import threesixty.hr.management.shared.services.work.order.WorkOrderType;
 import threesixty.hr.management.shared.services.work.order.WorkOrderTypeLookupCall;
 import threesixty.hr.management.shared.work.order.WorkOrderFormData;
 
@@ -172,19 +176,6 @@ public class WorkOrderForm extends AbstractForm {
 	public CancelButton getCancelButton() {
 		return getFieldByClass(CancelButton.class);
 	}
-
-	
-//	@Override
-//	protected void execFormActivated() {
-//
-//		WorkOrderFormData formData = new WorkOrderFormData();
-//		exportFormData(formData);
-//		
-//		formData = BEANS.get(IWorkManager.class).prepareModify(formData);
-//		importFormData(formData);
-//	}
-//	
-	
 	
 	@Order(1000)
 	public class MainBox extends AbstractGroupBox {
@@ -211,7 +202,7 @@ public class WorkOrderForm extends AbstractForm {
 				}
 			}
 
-			@Order(2000)
+			@Order(3000)
 			public class WorkOrderTypeField extends AbstractSmartField<String> {
 				@Override
 				protected String getConfiguredLabel() {
@@ -222,9 +213,32 @@ public class WorkOrderForm extends AbstractForm {
 				protected Class<? extends ILookupCall<String>> getConfiguredLookupCall() {
 					return WorkOrderTypeLookupCall.class;
 				}
+				
+				@Override
+				protected void execChangedValue() {
+					
+					Boolean capitalize = Boolean.FALSE;
+					Boolean estimate = Boolean.FALSE;
+					
+					if (StringUtility.hasText(getValue())) {
+						
+						WorkOrderType workOrderType = 
+								BEANS.get(IWorkManager.class)
+									.retrieveWorkOrderType(getValue());
+						
+						if (workOrderType != null) {
+					
+							capitalize = Optional.ofNullable(workOrderType.getCapitalize()).orElse(false);
+							estimate = Optional.ofNullable(workOrderType.getEstimate()).orElse(false);
+						}
+					}
+					
+					getCapitalizeField().setValue(capitalize);
+					getEstimateField().setValue(estimate);
+				}
 			}
 
-			@Order(3000)
+			@Order(4000)
 			public class FinanceBox extends AbstractSequenceBox {
 				@Override
 				protected String getConfiguredLabel() {
@@ -253,7 +267,7 @@ public class WorkOrderForm extends AbstractForm {
 				}
 			}
 
-			@Order(3000)
+			@Order(2000)
 			public class DescriptionField extends AbstractHtmlField {
 				@Override
 				protected String getConfiguredLabel() {

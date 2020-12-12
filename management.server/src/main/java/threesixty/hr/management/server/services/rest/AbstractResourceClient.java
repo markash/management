@@ -20,7 +20,7 @@ import org.slf4j.LoggerFactory;
 
 import threesixty.hr.management.shared.services.rest.IBaseRestResourceClient;
 
-public abstract class AbstractResourceClient<T> implements IRestResourceClient, IBaseRestResourceClient<T> {
+public abstract class AbstractResourceClient<T, ID> implements IRestResourceClient, IBaseRestResourceClient<T, ID> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(AbstractResourceClient.class);
 	
@@ -47,6 +47,7 @@ public abstract class AbstractResourceClient<T> implements IRestResourceClient, 
 	 * Retrieve the resource entries
 	 * @return List of resource entries
 	 */
+	@Override
 	public List<T> retrieveAll() {
 		
 		return query(null, new IRestParam[] {});
@@ -57,7 +58,7 @@ public abstract class AbstractResourceClient<T> implements IRestResourceClient, 
 	 * @return The resource identified by the id or null
 	 */
 	public T retrieveById(
-			final Long id) {
+			final ID id) {
 		
 		if (LOG.isInfoEnabled()) {
 			

@@ -14,7 +14,7 @@ import threesixty.hr.management.server.services.party.PartyEntityDo;
 import threesixty.hr.management.server.services.rest.AbstractResourceClient;
 import threesixty.hr.management.shared.services.party.person.Person;
 
-public class PersonResourceClient extends AbstractResourceClient<Person> {
+public class PersonResourceClient extends AbstractResourceClient<Person, Long> {
 	
 	protected static final String RESOURCE_PATH = "person";
 	
