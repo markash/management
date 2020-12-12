@@ -1,0 +1,21 @@
+CREATE TABLE party_identifier_type
+(
+		name						VARCHAR(128)		NOT NULL
+	,	description					VARCHAR(256)
+	,	managedby_party_id			BIGINT
+	,	processed					DATETIME2			NOT NULL 		CONSTRAINT PARTY_IDENTIFIER_TYPE_PROCESSED_DF DEFAULT GETDATE()
+	,	CONSTRAINT PARTY_IDENTIFIER_TYPE_PK
+		PRIMARY KEY
+		(
+			name
+		)
+	,	CONSTRAINT PARTY_IDENTIFIER_TYPE_MANAGED_BY_FK
+		FOREIGN KEY
+		(
+			ManagedBy_Party_Id
+		)
+		REFERENCES Party
+		(
+			Party_Id
+		)
+);

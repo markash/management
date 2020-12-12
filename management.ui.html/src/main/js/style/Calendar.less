@@ -1,0 +1,35 @@
+
+.calendar-component {
+
+  /* Colors for type Timesheet */
+
+  &.calendar-timesheet {
+    background-color: @palette-green-0;
+
+    & > .calendar-component-leftcolorborder {
+      background-color: @palette-green-2;
+    }
+
+    &:hover {
+      background-color: @palette-green-2;
+    }
+
+    &:hover > .calendar-component-leftcolorborder {
+      background-color: @palette-green-3;
+    }
+
+    &:hover .comp-selected > .calendar-component-leftcolorborder {
+      background-color: @palette-green-4;
+    }
+
+    &.comp-selected {
+      background-color: @palette-green-3;
+    }
+
+    &.comp-selected > .calendar-component-leftcolorborder {
+      background-color: @palette-green-4;
+    }
+  }
+
+
+}

@@ -1,0 +1,15 @@
+CREATE TABLE party
+(
+		party_id					BIGINT			NOT NULL		IDENTITY(1, 1) CONSTRAINT PARTY_PK PRIMARY KEY
+	,	type_id						INT 			NOT NULL
+	,	processed					DATETIME2		NOT NULL 		CONSTRAINT PARTY_PROCESSED_DF DEFAULT GETDATE()
+	,	CONSTRAINT PARTY_TYPE_FK 
+		FOREIGN KEY 
+		(
+			type_id
+		)
+		REFERENCES party_type 
+		(
+			type_id
+		)
+)

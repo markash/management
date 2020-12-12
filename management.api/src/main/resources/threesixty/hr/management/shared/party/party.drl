@@ -1,0 +1,13 @@
+package threesixty.hr.management.shared.party;
+
+import threesixty.hr.management.shared.party.Party;
+
+rule "Is valid party name" ruleflow-group "party"
+
+when
+    $person: Person(age > 18)
+then
+    modify($person) {
+    	setAdult(true)
+    };
+end

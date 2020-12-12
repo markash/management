@@ -1,0 +1,11 @@
+CREATE TABLE Party_Name_Type 
+(
+		Name					VARCHAR(128)		NOT NULL
+	,	Description				VARCHAR(256)
+	,	Processed				TIMESTAMP			NOT NULL 		DEFAULT CURRENT_TIMESTAMP
+	,	CONSTRAINT PARTY_NAME_TYPE_PK
+		PRIMARY KEY
+		(
+			Name
+		)
+)

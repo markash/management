@@ -1,0 +1,11 @@
+CREATE TABLE work_order_role_type
+(
+		name					VARCHAR(128)		NOT NULL
+	,	description				VARCHAR(256)
+	,	processed				DATETIME2			NOT NULL 		CONSTRAINT WORK_ORDER_ROLE_TYPE_PROCESSED_DF  DEFAULT GETDATE()
+	,	CONSTRAINT WORK_ORDER_ROLE_TYPE_PK
+		PRIMARY KEY
+		(
+			name
+		)
+)

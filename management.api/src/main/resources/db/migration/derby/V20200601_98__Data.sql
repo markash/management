@@ -1,0 +1,28 @@
+INSERT INTO TIMESHEET 
+(
+		WORK_ORDER_ID
+	,	SUBMIT_PARTY_ID
+	,	ACTIVITY_ID
+	,	ACTIVITY_START
+	,	ACTIVITY_END
+	,	ACTIVITY_DURATION
+	,	COMMENT
+) VALUES
+	(
+		(SELECT WORK_ORDER_ID FROM WORK_ORDER WHERE NAME = 'System X Build Project')
+	,	(SELECT PARTY_ID FROM PERSON WHERE FIRST_NAME = 'Mark' AND LAST_NAME = 'Ashworth')
+	,	NULL
+	,	'2020-06-03 20:00:00'
+	,	'2020-06-03 23:00:00'
+	,	NULL
+	,	'Move capitalize and estimate to the WORK_ORDER_TYPE table'		
+	)
+,	(
+		(SELECT WORK_ORDER_ID FROM WORK_ORDER WHERE NAME = 'System X Build Project')
+	,	(SELECT PARTY_ID FROM PERSON WHERE FIRST_NAME = 'Mark' AND LAST_NAME = 'Ashworth')
+	,	NULL
+	,	'2020-06-04 18:00:00'
+	,	'2020-06-04 23:00:00'
+	,	NULL
+	,	'Implement the TIMESHEET table, components and display'		
+	)
